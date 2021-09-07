@@ -98,6 +98,35 @@ class _CalculatorState extends State<Calculator> {
     );
   }
 
+  Widget buildButton2(String ButtonText, double ButtonHeight, Color ButtonColor,
+      Color TextColor) {
+    return Container(
+      width: MediaQuery.of(context).size.width * ButtonHeight,
+      child: Table(
+        children: [
+          TableRow(children: [
+            Container(
+              height: MediaQuery.of(context).size.width * ButtonHeight,
+              width: MediaQuery.of(context).size.width * (ButtonHeight / 2),
+              padding: EdgeInsets.all(0),
+              decoration: BoxDecoration(
+                  color: ButtonColor,
+                  border: Border.all(),
+                  borderRadius: BorderRadius.circular(10)),
+              child: TextButton(
+                  onPressed: () => ButtonPressed(ButtonText),
+                  child: Text(
+                    ButtonText,
+                    style: GoogleFonts.lato(fontSize: 48, color: TextColor),
+                    textAlign: TextAlign.center,
+                  )),
+            )
+          ])
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -158,7 +187,7 @@ class _CalculatorState extends State<Calculator> {
                       children: [
                         TableRow(
                           children: [
-                            buildButton("()", 0.2, Colors.white, Colors.black),
+                            buildButton2("()", 0.2, Colors.white, Colors.black),
                             buildButton("C", 0.2, Colors.white, Colors.black),
                             buildButton("⌫", 0.2, Colors.white, Colors.black),
                             buildButton("÷", 0.2, Colors.white, Colors.black),
